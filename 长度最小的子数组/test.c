@@ -11,34 +11,29 @@
 #include<Windows.h>
 
 int minSubArrayLen(int s, int* nums, int numsSize) {
-	int k = 0;
 	int i = 0;
 	int j = 0;
-	if (nums[0] == 1 && nums[1] == 2 && nums[2] == 3 && nums[3] == 4 && nums[4] == 5 && s == 11)
+	int sum = 0;
+	for (i = 0; i < numsSize; i++)
 	{
-		return 11;//这道题是错的
-	}
-	for (k = 0; k < numsSize; k++)
-	{
-		if (nums[k] >= s)
-			return 1;
-	}
-	for (k = 2; k <= numsSize; k++)
-	{
-		for (i = 0; i <= numsSize - k; i++)
+		if (nums[i] >= s)
 		{
-			int sum = nums[i];
-			for (j = i + 1; j < i + k; j++)
-			{
-				sum += nums[j];
-			}
-			if (sum >= s)
-			{
-				return k;
-			}
+			return 1;
 		}
 	}
-	return 0;
+	for (i = 1; i < numsSize; i++)
+	{
+		sum = 0;
+		for (j = 0; j <i; j++)
+		{
+			sum += nums[j];
+		}
+		if (sum >= s)
+		{
+			return i;
+		}
+
+	}
 }
 
 int main()
