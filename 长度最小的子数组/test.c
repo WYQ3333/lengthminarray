@@ -18,12 +18,14 @@ int minSubArrayLen(int s, int* nums, int numsSize) {
 	{
 		for (i = 0; i <= numsSize - k; i++)
 		{
+			int sum = nums[i];
 			for (j = i + 1; j < i + k; j++)
 			{
-				if ((nums[i] + nums[j]) == s)
-				{
-					return k;
-				}
+				sum += nums[j];
+			}
+			if (sum == s)
+			{
+				return k;
 			}
 		}
 	}
@@ -32,7 +34,7 @@ int minSubArrayLen(int s, int* nums, int numsSize) {
 
 int main()
 {
-	int nums[] = { 2, 3, 1, 2, 2,2, 3 };
+	int nums[] = { 2, 3, 1, 2, 4, 3 };
 	int s = 7;
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int ret = minSubArrayLen(s, nums, numsSize);
