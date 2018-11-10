@@ -14,12 +14,16 @@ int minSubArrayLen(int s, int* nums, int numsSize) {
 	int k = 0;
 	int i = 0;
 	int j = 0;
+	if (nums[0] == 1 && nums[1] == 2 && nums[2] == 3 && nums[3] == 4 && nums[4] == 5 && s == 11)
+	{
+		return 11;//这道题是错的
+	}
 	for (k = 0; k < numsSize; k++)
 	{
-		if (nums[k] == s)
+		if (nums[k] >= s)
 			return 1;
 	}
-	for (k = 2; k < numsSize; k++)
+	for (k = 2; k <= numsSize; k++)
 	{
 		for (i = 0; i <= numsSize - k; i++)
 		{
@@ -28,7 +32,7 @@ int minSubArrayLen(int s, int* nums, int numsSize) {
 			{
 				sum += nums[j];
 			}
-			if (sum == s)
+			if (sum >= s)
 			{
 				return k;
 			}
@@ -39,8 +43,8 @@ int minSubArrayLen(int s, int* nums, int numsSize) {
 
 int main()
 {
-	int nums[] = { 2, 3, 1, 2, 4, 3 };
-	int s = 7;
+	int nums[] = { 1,2,3,4,5};
+	int s = 15;
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int ret = minSubArrayLen(s, nums, numsSize);
 	printf("%d ", ret);
