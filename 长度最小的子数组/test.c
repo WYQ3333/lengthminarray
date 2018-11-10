@@ -14,6 +14,11 @@ int minSubArrayLen(int s, int* nums, int numsSize) {
 	int k = 0;
 	int i = 0;
 	int j = 0;
+	for (k = 0; k < numsSize; k++)
+	{
+		if (nums[k] == s)
+			return 1;
+	}
 	for (k = 2; k < numsSize; k++)
 	{
 		for (i = 0; i <= numsSize - k; i++)
