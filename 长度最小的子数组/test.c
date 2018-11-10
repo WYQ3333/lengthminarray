@@ -24,22 +24,23 @@ int minSubArrayLen(int s, int* nums, int numsSize) {
 	for (i = 1; i < numsSize; i++)
 	{
 		sum = 0;
-		for (j = 0; j <i; j++)
+		for (j = 0; j <numsSize-i; j++)
 		{
-			sum += nums[j];
+			for (j; j < j + i;j++)
+				sum += nums[j];
+			if (sum >= s)
+			{
+				return i;
+			}
 		}
-		if (sum >= s)
-		{
-			return i;
-		}
-
 	}
+	return 0;
 }
 
 int main()
 {
-	int nums[] = { 1,2,3,4,5};
-	int s = 15;
+	int nums[] = { 2, 3, 1, 2, 4, 3 };
+	int s = 7;
 	int numsSize = sizeof(nums) / sizeof(nums[0]);
 	int ret = minSubArrayLen(s, nums, numsSize);
 	printf("%d ", ret);
